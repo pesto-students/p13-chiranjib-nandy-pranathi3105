@@ -89,15 +89,15 @@ main > section {
 }
 
 /* TODO: Add media query for 600px breakpoint */
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
     /* styles for small screens */
     .benefits-container{
         flex-direction: row;
     }
    
   }
-  /* TODO: Add media query for 700px breakpoint */
-  @media (max-width: 700px) {
+  /* TODO: Add media query for 800px breakpoint */
+  @media screen and (min-width: 800px){
     nav li{
         display: inline;
     }
@@ -108,8 +108,8 @@ main > section {
   }
 
 
-/* TODO: Add media query for 800px breakpoint */
-@media (max-width: 700px) {
+/* TODO: Add media query for 700px breakpoint */
+@media screen and ((min-width: 701px) and (max-width:800px)) {
     .vacation-container img{
         width: 50vw;
 
