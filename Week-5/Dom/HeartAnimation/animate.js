@@ -1,49 +1,51 @@
-let timerId = null;
+let imgX = 0; // Initial heart position
+    let imgY = 0;
+    const speed = 1; // Pixels to move per step
+    let centerX = 0; // Target coordinates
+    let centerY = 0;
+    let timerId = null;
 
-window.addEventListener("DOMContentLoaded", function() {
-   document.addEventListener("click", startAnimation);
-});
+    function startAnimation() {
+      if (timerId !== null) {
+        clearInterval(timerId); // Stop the timer if it's running
+      }
 
-function startAnimation(e) {
+      // Determine where the user clicked
+      document.addEventListener('click', (event) => {
+        centerX = event.clientX;
+        centerY = event.clientY;
 
-   // Get mouse coordinates
-   let clickX = e.clientX;
-   let clickY = e.clientY;  
-   
-   // TODO: Modify the code below
-   moveImage(clickX, clickY);   
-}
+        // Start the timer to move the image every 10 milliseconds
+        timerId = setInterval(() => moveImage(centerX, centerY), 10);
+      });
+    }
 
-function moveImage(x, y) {
-   const img = document.querySelector("img");
-            
-   // Determine location of image
-   let imgX = parseInt(img.style.left);
-   let imgY = parseInt(img.style.top);
+    function moveImage(targetX, targetY) {
+      if (imgX === targetX && imgY === targetY) {
+        clearInterval(timerId); // Stop the timer if the heart has reached the target
+        timerId = null;
+        return;
+      }
 
-   // Determine (x,y) coordinates that center the image 
-   // around the clicked (x, y) coords
-   const centerX = Math.round(x - (img.width / 2));
-   const centerY = Math.round(y - (img.height / 2));
+      // Calculate the direction to move the heart
+      const deltaX = targetX - imgX;
+      const deltaY = targetY - imgY;
 
-   // TODO: Add code here
-   
-   
-   // Move 1 pixel in both directions toward the click
-   if (imgX < centerX) {
-      imgX++;
-   }
-   else if (imgX > centerX) {
-      imgX--;
-   }
-   
-   if (imgY < centerY) {
-      imgY++;
-   }
-   else if (imgY > centerY) {
-      imgY--;
-   }
-   
-   img.style.left = imgX + "px";
-   img.style.top = imgY + "px";
-}
+      // Calculate the distance to the target
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+      // Calculate the movement for this step
+      const moveX = (deltaX / distance) * speed;
+      const moveY = (deltaY / distance) * speed;
+
+      // Update the heart's position
+      imgX += moveX;
+      imgY += moveY;
+
+      // Move the heart to the new position
+      const heart = document.getElementById('heart');
+      heart.style.left = imgX + 'px';
+      heart.style.top = imgY + 'px';
+    }
+
+    startAnimation();
