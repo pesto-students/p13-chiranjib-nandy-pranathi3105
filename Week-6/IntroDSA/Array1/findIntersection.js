@@ -1,5 +1,14 @@
 function findIntersection(arr1, arr2) {
-return arr1.filter(value=>arr2.includes(value));
+    const intersection = [];
+
+    // Iterate through the first array
+    for (const element of arr1) {
+      if (arr2.includes(element)) {
+        intersection.push(element);
+      }
+    }
+  
+    return intersection;
 
 }
 
