@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vulnerability Scoring</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Vulnerability Scoring</h1>
+    <div>
+      <label for="property1">Property 1:</label>
+      <input type="radio" name="property1" value="3" id="prop1val1">
+      <label for="prop1val1">Low</label>
+      <input type="radio" name="property1" value="6" id="prop1val2">
+      <label for="prop1val2">Medium</label>
+      <input type="radio" name="property1" value="9" id="prop1val3">
+      <label for="prop1val3">High</label>
+    </div>
+    <div>
+      <label for="property2">Property 2:</label>
+      <input type="radio" name="property2" value="2" id="prop2val1">
+      <label for="prop2val1">Low</label>
+      <input type="radio" name="property2" value="5" id="prop2val2">
+      <label for="prop2val2">Medium</label>
+      <input type="radio" name="property2" value="8" id="prop2val3">
+      <label for="prop2val3">High</label>
+    </div>
+    <div>
+      <label for="property3">Property 3:</label>
+      <input type="radio" name="property3" value="1" id="prop3val1">
+      <label for="prop3val1">Low</label>
+      <input type="radio" name="property3" value="4" id="prop3val2">
+      <label for="prop3val2">Medium</label>
+      <input type="radio" name="property3" value="7" id="prop3val3">
+      <label for="prop3val3">High</label>
+    </div>
+    <div id="score-container">
+      <p id="warning">Please select one option from each property.</p>
+      <p id="score"></p>
+    </div>
+  </div>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
